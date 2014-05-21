@@ -18,8 +18,13 @@ class GuiceTest extends FlatSpec with Matchers {
     val injector = Guice.createInjector(
       new ConfigModule(),
       new AkkaModule(),
-      new SampleModule()
-    )
+      new SampleModule(),
+      new AbstractModule with ScalaModule {
+        override def configure() {
+          bind[CountingService].to[TestCountingService].in[Singleton]
+        }
+      }
+)
 
     val system = injector.instance[ActorSystem]
   }
@@ -39,7 +44,11 @@ class GuiceTest extends FlatSpec with Matchers {
     val result = counter.ask(Get)(duration).mapTo[Int]
     Await.result(result, duration) should be (3)
 
-    // shut down the actor system
+// check that it called the TestCountingService the right number of times
+val testService = injector.instance[CountingService].asInstanceOf[TestCountingService]
+testService.getNumberOfCalls should be(3)
+
+// shut down the actor system
     system.shutdown()
     system.awaitTermination()
   }
