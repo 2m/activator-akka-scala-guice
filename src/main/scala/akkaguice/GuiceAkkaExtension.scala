@@ -9,7 +9,7 @@ import com.google.inject.Injector
  */
 class GuiceAkkaExtensionImpl extends Extension {
 
-  private var injector: Injector = _
+  private[akkaguice] var injector: Injector = _
 
   def initialize(injector: Injector) {
     this.injector = injector

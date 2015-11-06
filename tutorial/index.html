@@ -73,7 +73,7 @@
   <p>To be able to use the Guice application context to let Guice create and
     wire up our actors, we need to store it away in a place that is easily
     accessible from within the actor system. This is an ideal use case for what
-    is called an <a href="http://doc.akka.io/docs/akka/2.3.2/scala/extending-akka.html">
+    is called an <a href="http://doc.akka.io/docs/akka/2.4.0/scala/extending-akka.html">
     Akka Extension</a>. An extension can be thought of as a per actor system
     singleton and the one in this tutorial is defined in the <a
     href="#code/src/main/scala/akkaguice/GuiceAkkaExtension.scala" class="shortcut">
@@ -90,7 +90,7 @@
     are only two methods, <code>initialize(injector: Injector)</code>
     that is used during startup to initialize the extension with the right
     Guice injector, and <code>props(actorName: String)</code>
-    that constructs a <a href="http://doc.akka.io/docs/akka/2.3.2/scala/actors.html#Props">
+    that constructs a <a href="http://doc.akka.io/docs/akka/2.4.0/scala/actors.html#Props">
     Props</a> from an actor name, that is used to create an actor.
   </p>
 
@@ -102,16 +102,16 @@
   <h2>Exploring the Code: The Guice Actor Producer</h2>
 
   <p>To let Guice create the actor from a bean name we need a way to allow the
-    Akka <a href="http://doc.akka.io/docs/akka/2.3.2/scala/actors.html#Props">
+    Akka <a href="http://doc.akka.io/docs/akka/2.4.0/scala/actors.html#Props">
     Props</a> to delegate actor creation to Guice. This is done in the <a
     href="#code/src/main/scala/akkaguice/GuiceActorProducer.scala" class="shortcut">
     GuiceActorProducer.scala</a> file.
   </p>
 
   <p>The <code>GuiceActorProducer</code> implements the <a
-    href="http://doc.akka.io/japi/akka/2.3.2/akka/actor/IndirectActorProducer.html">
+    href="http://doc.akka.io/japi/akka/2.4.0/akka/actor/IndirectActorProducer.html">
     <code>IndirectActorProducer</code></a> interface which is a way to let the
-    actor be <a href="http://doc.akka.io/docs/akka/2.3.2/scala/actors.html#Dependency_Injection">
+    actor be <a href="http://doc.akka.io/docs/akka/2.4.0/scala/actors.html#Dependency_Injection">
     created via a factory method</a>. This interface has two methods that need
     to be implemented, <code>actorClass</code> that will return the type of the
     actor that will be created, and <code>produce</code>, that needs to create

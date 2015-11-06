@@ -2,16 +2,16 @@ name := "activator-akka-scala-guice"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.7"
 
 libraryDependencies ++= {
-  val akkaVersion  = "2.3.9"
+  val akkaVersion  = "2.4.0"
   Seq(
-    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
-    "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
-    "com.google.inject" % "guice" % "4.0-beta5",
-    "net.codingwell" %% "scala-guice" % "4.0.0-beta5",
-    "org.scalatest" %% "scalatest" % "2.2.1" % "test",
+    "com.typesafe.akka" %% "akka-actor"   % akkaVersion,
+    "com.typesafe.akka" %% "akka-slf4j"   % akkaVersion,
+    "com.google.inject" %  "guice"        % "4.0",
+    "net.codingwell"    %% "scala-guice"  % "4.0.0",
+    "org.scalatest"     %% "scalatest"    % "2.2.5"     % "test",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test"
   )
 }
